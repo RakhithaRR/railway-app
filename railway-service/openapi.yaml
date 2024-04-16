@@ -43,7 +43,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Train"
     
-  /reservation:
+  /reservations:
     summary: Get All Reservations
     get:
       summary: Get Reservations
