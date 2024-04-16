@@ -30,7 +30,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Booking"
 
-  /train:
+  /trains:
     summary: Get Train Details
     get:
       summary: Get all train details
