@@ -9,16 +9,16 @@ import { BookingPayload } from '../api/models';
 
 const trains = [
     {
-        value: 'Kandy Express',
-        label: 'Kandy Express',
+        value: 'Orient Express',
+        label: 'Orient Express',
     },
     {
-        value: 'Galle Express',
-        label: 'Galle Express',
+        value: 'Manchester Bullet',
+        label: 'Manchester Bullet',
     },
     {
-        value: 'Jaffna Railways',
-        label: 'Jaffna Railways',
+        value: 'Queens Passage',
+        label: 'Queens Passage',
     },
 ];
 

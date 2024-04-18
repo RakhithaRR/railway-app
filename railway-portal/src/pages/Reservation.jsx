@@ -1,16 +1,28 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import { Box, Button, Card, CardContent, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Divider from "@mui/material/Divider";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import trainFenceLogo from '../assets/train-fence.svg';
+import { deleteReservation } from "../api/api";
 
 import { getReservations } from '../api/api';
 
 export default function Reservation() {
     const [reservations, setReservations] = useState([]);
+
+    const handleDelete = (id) => {
+        deleteReservation(id).then((response) => {
+            getReservations().then((response1) => {
+                setReservations(response1);
+            })
+            console.log(response);
+        }).catch((error) => {
+            console.error(error);
+        });
+    }
 
     useEffect(() => {
         getReservations().then((response) => {
@@ -84,9 +96,7 @@ export default function Reservation() {
                                     <Divider orientation="vertical" flexItem />
                                     <DeleteIcon 
                                         className="delete-icon"
-                                        onClick={(event) => {
-                                            window.location.href = "/"
-                                        }} 
+                                        onClick={() => handleDelete(reservation.ID)}
                                     />
                                 </Box>
                             </CardContent>

@@ -57,6 +57,16 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Reservation"
+    delete:
+      summary: Delete Reservation
+      operationId: DeleteReservation
+      responses:
+        "200":
+          description: Successful operation
+        "400":
+          description: Bad Request
+        "404":
+          description: Reservation not found
 
 components:
   schemas:

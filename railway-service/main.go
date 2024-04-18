@@ -13,32 +13,32 @@ import (
 
 var Train1 = Train{
 	ID:          1,
-	Name:        "Kandy Express",
-	Departure:   "Colombo",
-	Destination: "Kandy",
-	Capacity:    100,
+	Name:        "Orient Express",
+	Departure:   "London",
+	Destination: "Liverpool",
+	Capacity:    200,
 	Type:        "Express",
-	Price:       1000,
+	Price:       150,
 }
 
 var Train2 = Train{
 	ID:          2,
-	Name:        "Galle Express",
-	Departure:   "Colombo",
-	Destination: "Galle",
-	Capacity:    100,
+	Name:        "Manchester Bullet",
+	Departure:   "London",
+	Destination: "Manchester",
+	Capacity:    175,
 	Type:        "Express",
-	Price:       1500,
+	Price:       125,
 }
 
 var Train3 = Train{
 	ID:          3,
-	Name:        "Jaffna Railways",
-	Departure:   "Colombo",
-	Destination: "Jaffna",
-	Capacity:    100,
+	Name:        "Queens Passage",
+	Departure:   "London",
+	Destination: "Glasgow",
+	Capacity:    300,
 	Type:        "Non-Express",
-	Price:       800,
+	Price:       1100,
 }
 
 func main() {
@@ -79,6 +79,20 @@ func main() {
 	mux.HandleFunc("/reservations", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
 			json.NewEncoder(w).Encode(reservations)
+		} else if r.Method == http.MethodDelete {
+			id := r.URL.Query().Get("id")
+			if id == "" {
+				http.Error(w, "ID not found", http.StatusBadRequest)
+				return
+			}
+			for i, reservation := range reservations {
+				if reservation.ID == id {
+					reservations = append(reservations[:i], reservations[i+1:]...)
+					w.WriteHeader(http.StatusOK)
+					return
+				}
+			}
+			http.Error(w, "Reservation not found", http.StatusNotFound)
 		}
 	})
 
@@ -99,21 +113,21 @@ func addTrains() []Train {
 func addBooking(booking Booking) (Reservation, error) {
 	var reservation Reservation
 	uuid, _ := uuid.NewV7()
-	if booking.Train == "Kandy Express" {
+	if booking.Train == "Orient Express" {
 		reservation = Reservation{
 			ID:     uuid.String(),
 			Train:  Train1,
 			Amount: booking.Amount,
 			Cost:   booking.Amount * 1000,
 		}
-	} else if booking.Train == "Galle Express" {
+	} else if booking.Train == "Manchester Bullet" {
 		reservation = Reservation{
 			ID:     uuid.String(),
 			Train:  Train2,
 			Amount: booking.Amount,
 			Cost:   booking.Amount * 1500,
 		}
-	} else if booking.Train == "Jaffna Railways" {
+	} else if booking.Train == "Queens Passage" {
 		reservation = Reservation{
 			ID:     uuid.String(),
 			Train:  Train3,

@@ -16,3 +16,8 @@ export async function getReservations() {
     const resp = await getInstance().get("/reservations");
     return resp.data as AxiosResponse<Reservation[]>;
 }
+
+export async function deleteReservation(id: string) {
+    const resp = await getInstance().delete(`/reservations?id=${id}`);
+    return resp;
+}
