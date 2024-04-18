@@ -60,6 +60,12 @@ paths:
     delete:
       summary: Delete Reservation
       operationId: DeleteReservation
+      parameters:
+        - name: id
+          in: query
+          description: Reservation ID
+          schema:
+            type: string
       responses:
         "200":
           description: Successful operation
@@ -95,10 +101,10 @@ components:
           example: "Something Express"
         departure:
           type: string
-          example: "Colombo"
+          example: "London"
         destination:
           type: string
-          example: "Kandy"
+          example: "Liverpool"
         capacity:
           type: number
           example: 100
