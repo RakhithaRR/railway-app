@@ -24,7 +24,7 @@ function App() {
     let isUserInfoSet = false;
     if (import.meta.env.DEV) {
       // Set mock user info in local storage
-      const mockUserInfo = { username: 'johndoe', first_name: 'John', last_name: 'Doe' };
+      const mockUserInfo = { username: 'johndoe', first_name: 'John', last_name: 'Doe', name: 'John Doe'};
       localStorage.setItem('userInfo', JSON.stringify(mockUserInfo));
       isUserInfoSet = true;
     }
@@ -88,7 +88,7 @@ function App() {
                 }}
               >
                 <Typography component="div">
-                  {userDetails.first_name} {userDetails.last_name} 
+                  {userDetails.name? userDetails.name: userDetails.first_name + " " + userDetails.last_name}
                 </Typography>
                 <IconButton color="inherit" onClick={handleLogout}>
                   <LogoutIcon />
