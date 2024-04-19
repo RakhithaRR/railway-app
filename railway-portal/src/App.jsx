@@ -40,6 +40,7 @@ function App() {
       const encodedUserInfo = Cookies.get('userInfo');
       if (encodedUserInfo) {
         const decodedUserInfo = JSON.parse(atob(encodedUserInfo));
+        console.log(decodedUserInfo);
         setUserDetails(decodedUserInfo);
         setLoggedIn(true);
         localStorage.setItem('userInfo', JSON.stringify(decodedUserInfo));
