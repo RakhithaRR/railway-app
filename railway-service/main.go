@@ -118,21 +118,21 @@ func addBooking(booking Booking) (Reservation, error) {
 			ID:     uuid.String(),
 			Train:  Train1,
 			Amount: booking.Amount,
-			Cost:   booking.Amount * 1000,
+			Cost:   booking.Amount * Train1.Price,
 		}
 	} else if booking.Train == "Manchester Bullet" {
 		reservation = Reservation{
 			ID:     uuid.String(),
 			Train:  Train2,
 			Amount: booking.Amount,
-			Cost:   booking.Amount * 1500,
+			Cost:   booking.Amount * Train2.Price,
 		}
 	} else if booking.Train == "Queens Passage" {
 		reservation = Reservation{
 			ID:     uuid.String(),
 			Train:  Train3,
 			Amount: booking.Amount,
-			Cost:   booking.Amount * 800,
+			Cost:   booking.Amount * Train3.Price,
 		}
 	} else {
 		return Reservation{}, errors.New("Train not found")
