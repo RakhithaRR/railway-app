@@ -37,7 +37,7 @@ function App() {
     }
 
     if (!isUserInfoSet) {
-      const encodedUserInfo = Cookies.get('userInfo');
+      const encodedUserInfo = Cookies.get('userinfo');
       console.log(encodedUserInfo);
       if (encodedUserInfo) {
         const decodedUserInfo = JSON.parse(atob(encodedUserInfo));
