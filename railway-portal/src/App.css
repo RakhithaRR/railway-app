@@ -1,7 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -28,6 +33,11 @@
   padding: 0.3em;
   will-change: filter;
   transition: filter 300ms;
+}
+
+.logo-icon {
+  height: 3em;
+  margin-right: 0.5em;
 }
 
 .delete-icon:hover {

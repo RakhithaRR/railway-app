@@ -46,83 +46,85 @@ export default function Booking() {
     }
     
     return(
-        <Card>
-            <CardContent>
-                <Typography variant="h4" component="div">
-                    Book a Train
-                </Typography>
-                <img src={ticketLogo} className="ticket" alt="Ticket" />
-                <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '40ch' },
-                        }}
-                    noValidate
-                    autoComplete="off"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap={2}
-                    mb={4}
-                    ml={4}
-                    mr={4}
-                >
-                    <TextField
-                        select
-                        label="Select Train"
-                        defaultValue=""
-                        helperText="Please select the train you want to book"
-                        onChange={(e) => setTrain(e.target.value)}
+        <Box m="10%">
+            <Card>
+                <CardContent>
+                    <Typography variant="h4" component="div">
+                        Book a Train
+                    </Typography>
+                    <img src={ticketLogo} className="ticket" alt="Ticket" />
+                    <Box
+                        component="form"
+                        sx={{
+                            '& .MuiTextField-root': { m: 1, width: '40ch' },
+                            }}
+                        noValidate
+                        autoComplete="off"
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        gap={2}
+                        mb={4}
+                        ml={4}
+                        mr={4}
                     >
-                        {trains.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <TextField
-                        label="Number of Tickets"
-                        type="number"
-                        helperText="Please enter the number of tickets you want to purchase"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        InputProps={{
-                            inputProps: { min: 1 },
-                        }}
-                        onChange={(e) => setTickets(e.target.valueAsNumber)}
-                    />
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        style={{
-                            borderRadius: 32,
-                            textTransform: "none",
-                            height: 64,
-                            width: 175,
-                            fontSize: 18,
-                        }}
-                        onClick={bookTickets}
-                        disabled={train === '' || tickets === 0}
-                    >
-                        Book Tickets
-                    </Button>
-                    <Snackbar
-                        open={bookingAdded}
-                        onClose={handleAlertClose}
-                        autoHideDuration={4000}
-                    >
-                        <Alert
-                            severity="success"
-                            variant="filled"
-                            sx={{ width: '100%' }}
+                        <TextField
+                            select
+                            label="Select Train"
+                            defaultValue=""
+                            helperText="Please select the train you want to book"
+                            onChange={(e) => setTrain(e.target.value)}
                         >
-                            Booking added successfully!
-                        </Alert>
-                    </Snackbar>
-                </Box>
-            </CardContent>
-        </Card>
+                            {trains.map((option) => (
+                                <MenuItem key={option.value} value={option.value}>
+                                {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                        <TextField
+                            label="Number of Tickets"
+                            type="number"
+                            helperText="Please enter the number of tickets you want to purchase"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            InputProps={{
+                                inputProps: { min: 1 },
+                            }}
+                            onChange={(e) => setTickets(e.target.valueAsNumber)}
+                        />
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            style={{
+                                borderRadius: 32,
+                                textTransform: "none",
+                                height: 64,
+                                width: 175,
+                                fontSize: 18,
+                            }}
+                            onClick={bookTickets}
+                            disabled={train === '' || tickets === 0}
+                        >
+                            Book Tickets
+                        </Button>
+                        <Snackbar
+                            open={bookingAdded}
+                            onClose={handleAlertClose}
+                            autoHideDuration={4000}
+                        >
+                            <Alert
+                                severity="success"
+                                variant="filled"
+                                sx={{ width: '100%' }}
+                            >
+                                Booking added successfully!
+                            </Alert>
+                        </Snackbar>
+                    </Box>
+                </CardContent>
+            </Card>
+        </Box>
     )
 };

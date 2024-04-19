@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 import Chip from '@mui/material/Chip';
 import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 import Divider from "@mui/material/Divider";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import trainFenceLogo from '../assets/train-fence.svg';
@@ -94,10 +95,11 @@ export default function Reservation() {
                                         £{reservation.Cost}
                                     </Typography>
                                     <Divider orientation="vertical" flexItem />
-                                    <DeleteIcon 
-                                        className="delete-icon"
-                                        onClick={() => handleDelete(reservation.ID)}
-                                    />
+                                    <IconButton onClick={() => handleDelete(reservation.ID)}>
+                                        <DeleteIcon 
+                                            className="delete-icon"
+                                        />
+                                    </IconButton>
                                 </Box>
                             </CardContent>
                         </Card>
