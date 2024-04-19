@@ -24,7 +24,7 @@ function App() {
     let isUserInfoSet = false;
     if (import.meta.env.DEV) {
       // Set mock user info in local storage
-      const mockUserInfo = { username: 'johndoe', name: 'John Doe' };
+      const mockUserInfo = { username: 'johndoe', first_name: 'John', last_name: 'Doe' };
       localStorage.setItem('userInfo', JSON.stringify(mockUserInfo));
       isUserInfoSet = true;
     }
@@ -38,9 +38,9 @@ function App() {
 
     if (!isUserInfoSet) {
       const encodedUserInfo = Cookies.get('userInfo');
+      console.log(encodedUserInfo);
       if (encodedUserInfo) {
         const decodedUserInfo = JSON.parse(atob(encodedUserInfo));
-        console.log(decodedUserInfo);
         setUserDetails(decodedUserInfo);
         setLoggedIn(true);
         localStorage.setItem('userInfo', JSON.stringify(decodedUserInfo));
@@ -88,7 +88,7 @@ function App() {
                 }}
               >
                 <Typography component="div">
-                  {userDetails.name} 
+                  {userDetails.first_name} {userDetails.last_name} 
                 </Typography>
                 <IconButton color="inherit" onClick={handleLogout}>
                   <LogoutIcon />
