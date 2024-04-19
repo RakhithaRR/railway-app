@@ -28,6 +28,11 @@ function Login(props) {
                     <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center' }}>
                         Welcome to Railway Service
                     </Typography>
+                    {!isLoggedIn && (
+                        <Typography variant="body1" gutterBottom sx={{ textAlign: 'center' }}>
+                            You need to log in to access the services
+                        </Typography>
+                    )}
                     <Button
                         variant="contained"
                         color="secondary"

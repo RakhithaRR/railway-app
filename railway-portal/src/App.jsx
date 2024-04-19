@@ -16,6 +16,7 @@ import theme from './theme';
 import './App.css'
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userDetails, setUserDetails] = useState({ username: '' });
 
@@ -42,9 +43,10 @@ function App() {
         setUserDetails(decodedUserInfo);
         setLoggedIn(true);
         localStorage.setItem('userInfo', JSON.stringify(decodedUserInfo));
-        isUserInfoSet = true;
       }
     }
+
+    setLoading(false);
 
   }, []);
 
@@ -60,6 +62,10 @@ function App() {
 
     Cookies.remove('userinfo', { path: '/' });
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <ThemeProvider theme={theme}>
