@@ -55,7 +55,7 @@ function App() {
     // Clear any stored user information
     setUserDetails({});
     setLoggedIn(false);
-    localStorage.removeItem('userDetails');
+    localStorage.removeItem('userInfo');
 
     // Redirect to Choreo logout with session_hint
     const sessionHint = Cookies.get('session_hint');
