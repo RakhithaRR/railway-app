@@ -11,6 +11,7 @@ export default function LandingPage() {
         alignItems="center"
         flexGrow={1}
         gap={5}
+        mb={5}
       >
         <div>
             <a href="" target="_blank">
@@ -23,7 +24,6 @@ export default function LandingPage() {
           fontWeight={500}
           textAlign="center"
           variant="h1"
-          color="white"
         >
           Railway Service
         </Typography>
